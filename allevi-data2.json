@@ -1,0 +1,64 @@
+[
+    {
+        "print_data": {
+            "deadPercent": 15.89,
+            "elasticity": 0.82,
+            "livePercent": 80.16
+        },
+        "print_info": {
+            "crosslinking": {
+                "cl_duration": 0,
+                "cl_enabled": false,
+                "cl_intensity": 0
+            },
+            "files": {
+                "input": "file_98.gcode",
+                "output": "file_98_output.gcode"
+            },
+            "pressure": {
+                "extruder1": 33.0,
+                "extruder2": 43.0
+            },
+            "resolution": {
+                "layerHeight": 0.6,
+                "layerNum": 19
+            },
+            "wellplate": 6
+        },
+        "user_info": {
+            "email": "user99@gmail.com",
+            "serial": 99
+        }
+    },
+    {
+        "print_data": {
+            "deadPercent": 72.78,
+            "elasticity": 13.91,
+            "livePercent": 23.62
+        },
+        "print_info": {
+            "crosslinking": {
+                "cl_duration": 0,
+                "cl_enabled": false,
+                "cl_intensity": 0
+            },
+            "files": {
+                "input": "file_99.gcode",
+                "output": "file_99_output.gcode"
+            },
+            "pressure": {
+                "extruder1": 76.0,
+                "extruder2": 58.0
+            },
+            "resolution": {
+                "layerHeight": 0.7,
+                "layerNum": 11
+            },
+            "wellplate": 12
+        },
+        "user_info": {
+            "email": "user99@gmail.com",
+            "serial": 99
+        }
+    }
+]

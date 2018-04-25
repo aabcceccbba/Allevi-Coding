@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Print Data Table</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="table-responsive">
+        <h1>Print Data Table</h1>
+        <br />
+
+        <table class="table table-bordered table-striped" id="print_table">
+          <tr>
+            <th>Serial</th>
+            <th>LivePercent</th>
+            <th>Elasticity</th>
+            <th>DeadPercent</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+$(document).ready(function(){
+  $.getJSON("allevi-data.json", function(data){
+    var print_data = '';
+    $.each(data, function(key, value){
+
+      print_data += '<tr>';
+      print_data += '<td>' + value.user_info.serial + '</td>';
+      print_data += '<td>' + value.print_data.livePercent + '</td>';
+      print_data += '<td>' + value.print_data.elasticity + '</td>';
+      print_data += '<td>' + value.print_data.deadPercent + '</td>';
+      print_data += '</tr>';
+    });
+    $('#print_table').append(print_data);
+  });
+});
+</script>

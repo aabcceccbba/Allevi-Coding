@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Print Info Table</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="table-responsive">
+        <h1>Print Information Table</h1>
+        <br />
+
+        <table class="table table-bordered table-striped" id="print_info_table">
+          <tr>
+            <th>User_Info</th>
+            <th colspan="2">Files</th>
+            <th colspan="2">Pressure</th>
+            <th colspan="3">Crosslinking</th>
+            <th colspan="2">Resolution</th>
+            <th>Wellplate</th>
+          </tr>
+          <tr>
+            <th>Serial</th>
+            <th>Input</th>
+            <th>Output</th>
+            <th>Extruder1</th>
+            <th>Extruder2</th>
+            <th>cl_enabled</th>
+            <th>cl_duration</th>
+            <th>cl_intensity</th>
+            <th>layerNum</th>
+            <th>layerHeight</th>
+            <th></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+$(document).ready(function(){
+  $.getJSON("allevi-data.json", function(data){
+    var print_info_data = '';
+    $.each(data, function(key, value){
+
+      print_info_data += '<tr>';
+      print_info_data += '<td>' + value.user_info.serial + '</td>';
+      print_info_data += '<td>' + value.print_info.files.input + '</td>';
+      print_info_data += '<td>' + value.print_info.files.output + '</td>';
+      print_info_data += '<td>' + value.print_info.pressure.extruder1 + '</td>';
+      print_info_data += '<td>' + value.print_info.pressure.extruder2 + '</td>';
+      print_info_data += '<td>' + value.print_info.crosslinking.cl_enabled + '</td>';
+      print_info_data += '<td>' + value.print_info.crosslinking.cl_duration + '</td>';
+      print_info_data += '<td>' + value.print_info.crosslinking.cl_intensity + '</td>';
+      print_info_data += '<td>' + value.print_info.resolution.layerNum + '</td>';
+      print_info_data += '<td>' + value.print_info.resolution.layerHeight + '</td>';
+      print_info_data += '<td>' + value.print_info.wellplate + '</td>';
+      print_info_data += '</tr>';
+    });
+    $('#print_info_table').append(print_info_data);
+  });
+});
+</script>

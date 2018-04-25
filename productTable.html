@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Table</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="table-responsive">
+        <h1>Product Table</h1>
+        <br />
+
+        <table class="table table-bordered table-striped" id="product_table">
+          <tr>
+            <th colspan="2">Files</th>
+            <th colspan="2">Pressure</th>
+            <th colspan="3">Crosslinking</th>
+            <th colspan="2">Resolution</th>
+            <th>Wellplate</th>
+            <th>LivePercent</th>
+            <th>Elasticity</th>
+            <th>DeadPercent</th>
+          </tr>
+          <tr>
+            <th>Input</th>
+            <th>Output</th>
+            <th>Extruder1</th>
+            <th>Extruder2</th>
+            <th>cl_enabled</th>
+            <th>cl_duration</th>
+            <th>cl_intensity</th>
+            <th>layerNum</th>
+            <th>layerHeight</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+$(document).ready(function(){
+  $.getJSON("allevi-data.json", function(data){
+    var product_data = '';
+    $.each(data, function(key, value){
+
+      product_data += '<tr>';
+      product_data += '<td>' + value.print_info.files.input + '</td>';
+      product_data += '<td>' + value.print_info.files.output + '</td>';
+      product_data += '<td>' + value.print_info.pressure.extruder1 + '</td>';
+      product_data += '<td>' + value.print_info.pressure.extruder2 + '</td>';
+      product_data += '<td>' + value.print_info.crosslinking.cl_enabled + '</td>';
+      product_data += '<td>' + value.print_info.crosslinking.cl_duration + '</td>';
+      product_data += '<td>' + value.print_info.crosslinking.cl_intensity + '</td>';
+      product_data += '<td>' + value.print_info.resolution.layerNum + '</td>';
+      product_data += '<td>' + value.print_info.resolution.layerHeight + '</td>';
+      product_data += '<td>' + value.print_info.wellplate + '</td>';
+      product_data += '<td>' + value.print_data.livePercent + '</td>';
+      product_data += '<td>' + value.print_data.elasticity + '</td>';
+      product_data += '<td>' + value.print_data.deadPercent + '</td>';
+      product_data += '</tr>';
+    });
+    $('#product_table').append(product_data);
+  });
+});
+</script>
